@@ -56,7 +56,7 @@ class AuthController extends Controller
         if (Auth::attempt($data)) {
             try {
                 $user = User::where('email', $data['email'])->first();
-                $token = $user->createToken('RAELMCA TOKEN')->accessToken;
+                $token = Auth::user()->createToken('RAELMCA TOKEN')->accessToken;
                 $user->last_connected = new \DateTime();
                 $user->save();
 
