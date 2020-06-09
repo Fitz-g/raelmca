@@ -20,5 +20,6 @@ Route::group(['middleware' => ['json.response']], function () {
 
     Route::middleware(['auth:api'])->group(function () {
         Route::get('/users', 'UserController@list');
+        Route::resource('pays', 'PaysController');
     });
 });
