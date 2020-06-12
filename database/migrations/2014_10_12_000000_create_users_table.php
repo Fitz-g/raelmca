@@ -19,11 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('prenoms');
             $table->string('email')->unique();
 //            $table->string('status')->nullable();
-            $table->boolean('is_active')->default(1);
+            $table->boolean('is_active')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->dateTime('last_connected')->nullable();
+            $table->dateTime('last_disconnected')->nullable();
             $table->timestamps();
         });
     }

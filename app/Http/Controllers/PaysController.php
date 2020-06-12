@@ -16,7 +16,7 @@ class PaysController extends Controller
      */
     public function index()
     {
-        return Pays::all();
+        return Pays::all(); 
     }
 
     /**
@@ -58,7 +58,14 @@ class PaysController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $pays = Pays::find($id);
+            if ($pays) {
+                return response()->json(ApiResponse::getRessourceSuccess(200, $pays));
+            } 
+        } catch(\Exception $e) {
+            return response()->json(ApiResponse::error(404, 'Une erreur est survenu ' . $e->getMessage()));
+        }
     }
 
     /**
@@ -81,7 +88,24 @@ class PaysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|min:3|unique:pays',
+            'alpha3' => 'required|max:3|unique:pays'
+        ]);
+
+        try {
+            $pays = Pays::find($id);
+            if ($pays) {
+                $pays->name = $data['name'];
+                $pays->alpha3 = $data['alpha3'];
+
+                return response()->json(ApiResponse::getRessourceSuccess(200, $pays));
+            } else {
+                return response()->json(ApiResponse::error(404, "Aucun élément trouver avec cet Identifiant"));
+            }            
+        } catch (\Exception $e) {
+            return response()->json(ApiResponse::error(500, $e->getMessage()));
+        }
     }
 
     /**
@@ -92,6 +116,13 @@ class PaysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $pays = Pays::find($id);
+            $pays->delete();
+
+            return response()->json(ApiResponse::DELETESUCCESS);
+        } catch (\Exception $e) {
+            return response()->json(ApiResponse::error(500, $e->getMessage()));
+        }
     }
 }
