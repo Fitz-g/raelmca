@@ -20,4 +20,5 @@ Route::get('/logout', 'AuthController@logout')->name('user-logout');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', 'HomeController@index')->name('home');
+    Route::resource('pays', 'PaysController');
 });

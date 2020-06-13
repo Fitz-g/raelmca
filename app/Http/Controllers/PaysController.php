@@ -16,7 +16,7 @@ class PaysController extends Controller
      */
     public function index()
     {
-        return Pays::all(); 
+        return Pays::all();
     }
 
     /**
@@ -43,10 +43,10 @@ class PaysController extends Controller
         ]);
 
         try {
-            $pays = Pays::create($data);
-            return response()->json(ApiResponse::getRessourceSuccess(200, $pays));
+            $countries = Pays::create($data);
+            return redirect()->route('pays.index', compact('countries'));
         } catch (\Exception $e) {
-            return response()->json(ApiResponse::error(500, $e->getMessage()));
+            return 'Une erreur est survenu ' . $e->getMessage();
         }
     }
 
@@ -54,17 +54,17 @@ class PaysController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function show($id)
     {
         try {
-            $pays = Pays::find($id);
-            if ($pays) {
-                return response()->json(ApiResponse::getRessourceSuccess(200, $pays));
-            } 
+            $country = Pays::find($id);
+            if ($country) {
+                return redirect()->route('pays.show', compact('country'));
+            }
         } catch(\Exception $e) {
-            return response()->json(ApiResponse::error(404, 'Une erreur est survenu ' . $e->getMessage()));
+            return 'Une erreur est survenu ' . $e->getMessage();
         }
     }
 
@@ -84,7 +84,7 @@ class PaysController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function update(Request $request, $id)
     {
@@ -98,13 +98,14 @@ class PaysController extends Controller
             if ($pays) {
                 $pays->name = $data['name'];
                 $pays->alpha3 = $data['alpha3'];
+                $pays->save();
 
-                return response()->json(ApiResponse::getRessourceSuccess(200, $pays));
+                return redirect()->route('pays.index');
             } else {
-                return response()->json(ApiResponse::error(404, "Aucun élément trouver avec cet Identifiant"));
-            }            
+                return redirect()->route('pays.index')->with('Aucun pays trouvé avec cet identifiant.');
+            }
         } catch (\Exception $e) {
-            return response()->json(ApiResponse::error(500, $e->getMessage()));
+            return 'Une erreur est survenu' . $e->getMessage();
         }
     }
 
@@ -112,17 +113,19 @@ class PaysController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function destroy($id)
     {
         try {
             $pays = Pays::find($id);
-            $pays->delete();
+            if($pays) {
+                $pays->delete();
+            }
 
-            return response()->json(ApiResponse::DELETESUCCESS);
+            return redirect()->route('pays.index');
         } catch (\Exception $e) {
-            return response()->json(ApiResponse::error(500, $e->getMessage()));
+            return 'Une erreur est survenu ' . $e->getMessage();
         }
     }
 }

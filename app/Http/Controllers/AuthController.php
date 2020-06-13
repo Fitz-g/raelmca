@@ -45,7 +45,7 @@ class AuthController extends Controller
                 return 'Une erreur est survenu ' . $e->getMessage();
             }
         } else {
-            return redirect()->route('login')->with('danger', "Les informations entrées ne correspondent a aucun enregistrement dans notre base de données.\n Veuillez réessayer s'il vous plaît.");
+            return redirect()->route('login')->with('danger', "Email et / ou mot de passe incorrects.");
         }
     }
 
