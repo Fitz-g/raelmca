@@ -15,8 +15,8 @@ class CreatePaysTable extends Migration
     {
         Schema::create('pays', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('alpha3');
+            $table->string('name')->unique();
+            $table->string('alpha3')->unique();
             $table->timestamps();
         });
     }

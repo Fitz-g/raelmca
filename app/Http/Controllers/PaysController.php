@@ -12,11 +12,13 @@ class PaysController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Pays[]|Collection
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return Pays::all();
+        $pays = Pays::all();
+
+        return view('admin.pays.index', compact('pays'));
     }
 
     /**
@@ -44,7 +46,7 @@ class PaysController extends Controller
 
         try {
             $countries = Pays::create($data);
-            return redirect()->route('pays.index', compact('countries'));
+            return redirect()->route('pays.index', compact('countries'))->with('success', 'Le pays a été créé avec succès.');
         } catch (\Exception $e) {
             return 'Une erreur est survenu ' . $e->getMessage();
         }
