@@ -16,7 +16,7 @@ class PaysController extends Controller
      */
     public function index()
     {
-        $pays = Pays::all();
+        $pays = Pays::orderByDesc('created_at')->get();
 
         return view('admin.pays.index', compact('pays'));
     }
@@ -74,11 +74,13 @@ class PaysController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $pays = Pays::findOrFail($id);
+
+        return view('admin.pays.edit', compact('pays'));
     }
 
     /**
@@ -91,20 +93,20 @@ class PaysController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' => 'required|min:3|unique:pays',
-            'alpha3' => 'required|max:3|unique:pays'
+            'name' => 'required|min:3',
+            'alpha3' => 'required|max:3'
         ]);
 
         try {
-            $pays = Pays::find($id);
+            $pays = Pays::findOrFail($id);
             if ($pays) {
                 $pays->name = $data['name'];
                 $pays->alpha3 = $data['alpha3'];
                 $pays->save();
 
-                return redirect()->route('pays.index');
+                return redirect()->route('pays.index')->with('success', 'Pays modifié avec succès.');
             } else {
-                return redirect()->route('pays.index')->with('Aucun pays trouvé avec cet identifiant.');
+                return redirect()->back()->with('danger', 'Aucun pays trouvé avec cet identifiant.');
             }
         } catch (\Exception $e) {
             return 'Une erreur est survenu' . $e->getMessage();

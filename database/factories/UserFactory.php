@@ -24,7 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => 'wilfried.korandji@gmail.com',
         'is_active' => 1,
         'email_verified_at' => now(),
-        'password' => \Illuminate\Support\Facades\Hash::make('admin@2020'),
+        'password' => \Illuminate\Support\Facades\Hash::make('admin.2020'),
         'remember_token' => Str::random(10),
     ];
 });

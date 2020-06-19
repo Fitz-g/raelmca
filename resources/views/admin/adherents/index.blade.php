@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Liste des pays
+    Liste des adhérents
 @endsection
 
 @section('css')
@@ -15,10 +15,10 @@
 
 @section('breadcrumb')
     <div class="col-sm-6">
-        <h4 class="page-title">Pays</h4>
+        <h4 class="page-title">Adhérents</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Pays</li>
+            <li class="breadcrumb-item active">Adhérents</li>
         </ol>
     </div>
 @endsection
@@ -37,71 +37,51 @@
                                 {{ session('danger') }}
                             </div>
                         @endif
-                        <h4 class="mt-0 header-title">Liste des pays</h4>
+                        <h4 class="mt-0 header-title">Liste des adhérents</h4>
                         <p class="text-muted m-b-30">
-                            Tableau contenant la liste de tous les pays où se trouve au moins un membre du RAELMCA.
-                        </p>
-                        <p>
-                            <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="fas fa-save"></i> Créer</button>
+                            Tableau contenant la liste de tous les adhérents du RAELMCA.
                         </p>
 
-                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title mt-0">Création d'un pays</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="col-10 offset-1">
-                                            <form action="{{ route('pays.store') }}" method="post">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="name">Nom</label>
-                                                    <input type="text" name="name" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="name">Code alpha</label>
-                                                    <input type="text" name="alpha3" class="form-control">
-                                                </div>
-                                                <div class="text-right">
-                                                    <button type="submit" class="btn btn-success waves-effect waves-light mr-1">
-                                                        <i class="fas fa-save"></i> Créer
-                                                    </button>
-                                                    <button type="reset" class="btn btn-secondary waves-effect">
-                                                        Effacer
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                        <p>
+                            <a href="{{ route('adherents.create') }}" class="btn btn-success waves-effect waves-light"><i class="fas fa-save"></i> Nouvel adhérent</a>
+                        </p>
 
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Nom</th>
-                                    <th>Code Alpha 3</th>
+                                    <th>Non</th>
+                                    <th>Prénoms</th>
+                                    <th>date de naissance</th>
+                                    <th>fonction</th>
+                                    <th>phone1</th>
+                                    <th>phone2</th>
+                                    <th>email</th>
+                                    <th>cv</th>
+                                    <th>photo</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($pays as $country)
                                 <tr>
-                                    <td>{{ $country->name }}</td>
-                                    <td>{{ $country->alpha3 }}</td>
+                                    <td>Non</td>
+                                    <td>Prénoms</td>
+                                    <td>date_naissance</td>
+                                    <td>fonction</td>
+                                    <td>phone1</td>
+                                    <td>phone2</td>
+                                    <td>email</td>
+                                    <td>cv</td>
+                                    <td>photo</td>
                                     <td style="width:200px;text-align: center">
-                                        <a href="{{ route('pays.edit', ['pay' => $country->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Modifier</a>
-                                        <form action="{{ route('pays.destroy', ['pay' => $country->id]) }}" method="post" style="display: inline-block;">
+                                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i> Voir</a>
+                                        <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Modifier</a>
+                                        <form action="#" method="post" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Action irréversible, ête vous sûr ?')"><i class="fas fa-trash-alt"></i> Supprimer</button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>

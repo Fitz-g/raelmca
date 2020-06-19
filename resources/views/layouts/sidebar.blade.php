@@ -18,6 +18,18 @@
                                     <span> Pays </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('structures.index') }}" class="waves-effect">
+                                    <i class="ion ion-md-business"></i>
+                                    <span> Structures </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('adherents.index') }}" class="waves-effect">
+                                    <i class="fas fa-user"></i>
+                                    <span> Adhérents </span>
+                                </a>
+                            </li>
 
 {{--                            <li class="menu-title">Components</li>--}}
 

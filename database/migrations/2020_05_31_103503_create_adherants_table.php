@@ -24,11 +24,9 @@ class CreateAdherantsTable extends Migration
             $table->string('email')->unique()->index();
             $table->string('cv')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('structure_id')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('pays_id');
-
             $table->foreign('pays_id')->references('id')->on('pays')
                     ->onDelete('cascade')->onUpdate('cascade');
         });
