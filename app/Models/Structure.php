@@ -13,6 +13,6 @@ class Structure extends Model
      */
     public function adherants()
     {
-        return $this->hasMany('App\Models\Adherant');
+        return $this->hasMany('App\Models\Adherant', 'adherant_structure')->withTimestamps();
     }
 }

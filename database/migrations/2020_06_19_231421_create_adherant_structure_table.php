@@ -15,6 +15,8 @@ class CreateAdherantStructureTable extends Migration
     {
         Schema::create('adherant_structure', function (Blueprint $table) {
             $table->id();
+            $table->integer('structure_id');
+            $table->integer('adherant_id');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@
             <div class="content">
                 <div class="container-fluid">
                    @include('layouts.settings')
+                   <div class="col-12">@include('includes.flash-message')</div>
                    @yield('content')
                 </div>
             </div>
