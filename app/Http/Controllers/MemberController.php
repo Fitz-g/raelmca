@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Adherant;
+use Illuminate\Http\Request;
+use App\Models\Member;
 use App\Models\Structure;
 use App\Models\Pays;
-use Illuminate\Http\Request;
 
-class AdherantController extends Controller
+class MemberController extends Controller
 {
     /**
      * Liste des adhérents
      */
     public function index()
     {
-        $adherents = Adherant::orderBy('created_at', 'desc')->get();
+        $members = Member::orderBy('created_at', 'desc')->get();
 
-        return view('admin.adherents.index', compact('adherents'));
+        return view('admin.adherents.index', compact('members'));
     }
 
     /**
@@ -39,23 +39,24 @@ class AdherantController extends Controller
             'nom' => 'required|string|min:3|max:60',
             'prenoms' => 'required|string|min:3|max:200',
             'date_naissance' => 'required|date',
-            'email' => 'required|email|unique:adherants',
+            'email' => 'required|email|unique:members',
             'fonction' => 'required|string',
-            'phone1' => 'required|string',
-            'phone2' => 'string',
+            'phone1' => 'required|regex:/^[0-9]+$/',
+            'phone2' => 'nullable|regex:/^[0-9]+$/',
             'pays_id' => 'required|integer',
             'cv' => 'mimes:docx,pdf',
             'photo' => 'mimes:jpeg,bmp,png|image',
             'structure_id' => 'array',
         ]);
-        dd($data);
 
         try {
-            $adherent = Adherant::create($data);
-            $adherent->structures()->attach($data['structure_id']);
+            $adherent = Member::create($data);
+            // Ajout dans une structure si existe.
+            if(!is_null($data['structure_id'])) {
+                $adherent->structures()->sync($data['structure_id']);
+            }
 
-
-            return redirect()->route('adherents.index')->with('success', 'Nouvel adhérent créé avec succès.');
+            return redirect()->route('members.index')->with('success', 'Nouvel adhérent créé avec succès.');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', 'Une erreur est survenu ' . $e->getMessage());
         }

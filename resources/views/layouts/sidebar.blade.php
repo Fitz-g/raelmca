@@ -25,7 +25,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('adherents.index') }}" class="waves-effect">
+                                <a href="{{ route('members.index') }}" class="waves-effect">
                                     <i class="fas fa-user"></i>
                                     <span> Adhérents </span>
                                 </a>

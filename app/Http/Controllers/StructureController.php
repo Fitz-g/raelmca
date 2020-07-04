@@ -44,8 +44,14 @@ class StructureController extends Controller
             'name' => 'required|min:3|string'
         ]);
 
-        $structures = Structure::create($data);
-        return redirect()->route('structures.index', compact('structures'))->with('success', 'La structure a été créé avec succès.');
+        try {
+            $structures = Structure::create($data);
+        } catch (\Exception $e) {
+            dump('Une erreur est survenu ' . $e->getMessage());
+        }
+
+        return redirect()->route('structures.index', compact('structures'))
+            ->with('success', 'La structure a été créé avec succès.');
     }
 
     /**
@@ -96,8 +102,9 @@ class StructureController extends Controller
             $structure = Structure::findOrFail($id);
             if ($structure) {
                 $structure->name = $data['name'];
+                $structure->updated_at = NOW();
                 $structure->save();
-                
+
                 return redirect()->route('structures.index')->with('success', 'La structure a été modifié avec succès.');
             } else {
                 return redirect()->back()->with('danger', 'Auccune structure n\'a été trouvé avec cet identifiant.');

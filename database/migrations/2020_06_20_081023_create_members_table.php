@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdherantsTable extends Migration
+class CreateMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAdherantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('adherants', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('nom')->index();
             $table->string('prenoms')->index();
@@ -39,6 +39,6 @@ class CreateAdherantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adherants');
+        Schema::dropIfExists('members');
     }
 }

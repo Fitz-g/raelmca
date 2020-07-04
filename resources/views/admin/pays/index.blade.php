@@ -58,11 +58,11 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="name">Nom</label>
-                                                    <input type="text" name="name" class="form-control">
+                                                    <input type="text" name="name" required class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="name">Code alpha</label>
-                                                    <input type="text" name="alpha3" class="form-control">
+                                                    <input type="text" name="alpha3" required class="form-control">
                                                 </div>
                                                 <div class="text-right">
                                                     <button type="submit" class="btn btn-success waves-effect waves-light mr-1">

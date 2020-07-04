@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8124a02b-fb29-44b5-85f5-db880c03e328" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StructureController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/structures/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/structures/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/raelmca.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/raelmca.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdherantController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaysController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaysController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pays/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pays/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StructureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StructureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Adherant.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Structure.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Structure.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_31_103503_create_adherants_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_19_231421_create_adherant_structure_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adherents/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adherents/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adherents/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adherents/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/pays/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pays/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/flash-message.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -23,9 +23,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -136,13 +134,13 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../timbre" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../eyumbalocataire" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -184,21 +182,22 @@
       <workItem from="1592245186141" duration="3992000" />
       <workItem from="1592418224219" duration="2923000" />
       <workItem from="1592468062600" duration="188000" />
+      <workItem from="1593690068549" duration="814000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592129877999">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1592129877999" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1592468248778">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1593690930882">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592468248778" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593690930882" />
     <state width="525" height="446" key="SwitcherDM" timestamp="1591984145281">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

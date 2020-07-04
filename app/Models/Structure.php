@@ -11,8 +11,8 @@ class Structure extends Model
     /**
      * Get the adherants for the structure.
      */
-    public function adherants()
+    public function members()
     {
-        return $this->hasMany('App\Models\Adherant', 'adherant_structure')->withTimestamps();
+        return $this->belongsToMany('App\Models\Member', 'member_structure')->withTimestamps();
     }
 }

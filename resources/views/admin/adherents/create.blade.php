@@ -10,7 +10,7 @@
         <h4 class="page-title">Page de création d'un nouvel adhérent</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('adherents.index') }}">Liste des adhérents</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('members.index') }}">Liste des adhérents</a></li>
             <li class="breadcrumb-item active">Création</li>
         </ol>
     </div>
@@ -32,7 +32,7 @@
                     <strong>Champs obligatoire</strong> <span class="text-danger">*</span>
                 </p>
                 <hr>
-                <form action="{{ route('adherents.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('members.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="row">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone2">Téléphone 2</label>
-                                <input type="text" name="phone2" id="phone2" class="form-control" required placeholder="Numéro de téléphone 2" value="{{ old('phone2') }}">
+                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="Numéro de téléphone 2" value="{{ old('phone2') }}">
                                 @error('phone2')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

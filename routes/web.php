@@ -22,7 +22,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('pays', 'PaysController');
     Route::resource('structures', 'StructureController');
 
-    Route::get('/adherents', 'AdherantController@index')->name('adherents.index');
-    Route::get('/adherents/create', 'AdherantController@create')->name('adherents.create');
-    Route::post('/adherents/store', 'AdherantController@store')->name('adherents.store');
+    Route::get('/members', 'MemberController@index')->name('members.index');
+    Route::get('/members/create', 'MemberController@create')->name('members.create');
+    Route::post('/members/store', 'MemberController@store')->name('members.store');
 });

@@ -46,7 +46,9 @@ class PaysController extends Controller
 
         try {
             $countries = Pays::create($data);
-            return redirect()->route('pays.index', compact('countries'))->with('success', 'Le pays a été créé avec succès.');
+
+            return redirect()->route('pays.index', compact('countries'))
+                ->with('success', 'Le pays a été créé avec succès.');
         } catch (\Exception $e) {
             return 'Une erreur est survenu ' . $e->getMessage();
         }
@@ -102,6 +104,7 @@ class PaysController extends Controller
             if ($pays) {
                 $pays->name = $data['name'];
                 $pays->alpha3 = $data['alpha3'];
+                $pays->updated_at = NOW();
                 $pays->save();
 
                 return redirect()->route('pays.index')->with('success', 'Pays modifié avec succès.');
@@ -127,9 +130,9 @@ class PaysController extends Controller
                 $pays->delete();
             }
 
-            return redirect()->route('pays.index');
+            return redirect()->route('pays.index')->with('success', 'Le pays a été supprimé.');
         } catch (\Exception $e) {
-            return 'Une erreur est survenu ' . $e->getMessage();
+            dump('Une erreur est survenu ' . $e->getMessage());
         }
     }
 }
