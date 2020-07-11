@@ -38,6 +38,7 @@ class AuthController extends Controller
             try {
                 $user = User::where('email', $data['email'])->first();
                 $user->last_connected = new \DateTime();
+                $user->updated_at = date('Y-m-d H:i:s');
                 $user->save();
 
                 return redirect()->intended('admin/dashboard');

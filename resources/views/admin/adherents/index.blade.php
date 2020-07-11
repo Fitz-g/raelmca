@@ -49,37 +49,62 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
+{{--                                    <th>photo</th>--}}
+{{--                                    <th>cv</th>--}}
                                     <th>Non</th>
                                     <th>Prénoms</th>
+                                    <th>email</th>
                                     <th>date de naissance</th>
                                     <th>fonction</th>
+                                    <th>Pays</th>
                                     <th>phone1</th>
                                     <th>phone2</th>
-                                    <th>email</th>
-                                    <th>cv</th>
-                                    <th>photo</th>
+{{--                                    <th>Structure</th>--}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($members as $member)
                                     <tr>
+{{--                                        <td>--}}
+{{--                                            @if (isset($member->photo))--}}
+{{--                                                <img--}}
+{{--                                                    src="{{ asset('storage' . DIRECTORY_SEPARATOR . 'photos' . DIRECTORY_SEPARATOR . $member->photo) }}"--}}
+{{--                                                    alt="Avatar member"--}}
+{{--                                                    width="60px">--}}
+{{--                                            @else--}}
+{{--                                                Indisponible--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
+{{--                                        <td>--}}
+{{--                                            @if (isset($member->cv))--}}
+{{--                                                <a class="text-info" target="_blank" href="{{ asset('storage' . DIRECTORY_SEPARATOR . 'cv' . DIRECTORY_SEPARATOR . $member->cv) }}">--}}
+{{--                                                    Télécharger--}}
+{{--                                                </a>--}}
+{{--                                            @else--}}
+{{--                                                Indisponible--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
                                         <td>{{ $member->nom }}</td>
                                         <td>{{ $member->prenoms }}</td>
+                                        <td>{{ $member->email }}</td>
                                         <td>{{ date('d-m-Y', strtotime($member->date_naissance)) }}</td>
                                         <td>{{ $member->fonction }}</td>
+                                        <td>{{ $member->pays->name }}</td>
                                         <td>{{ $member->phone1 }}</td>
                                         <td>{{ $member->phone2 ? $member->phone2 : 'Non renseigné' }}</td>
-                                        <td>{{ $member->email }}</td>
-                                        <td>{{ $member->cv }}</td>
-                                        <td>{{ $member->photo }}</td>
+{{--                                        <td>--}}
+{{--                                            @foreach($member->structures as $structure)--}}
+{{--                                                <span class="badge badge-info">{{ $structure->name }}</span>--}}
+{{--                                            @endforeach--}}
+{{--                                        </td>--}}
                                         <td style="width:200px;text-align: center">
-                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i> Voir</a>
-                                            <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Modifier</a>
+                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Voir</a>
+                                            <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</a>
                                             <form action="#" method="post" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Action irréversible, ête vous sûr ?')"><i class="fas fa-trash-alt"></i> Supprimer</button>
+                                                <button type="submit" class="btn btn-danger waves-effect waves-light btn-sm" onclick="return confirm('Action irréversible, ête vous sûr ?')"><i class="fas fa-trash-alt"></i> Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>

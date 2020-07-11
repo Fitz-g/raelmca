@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helpers;
+use App\Http\Requests\StoreMemberRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Structure;
@@ -32,34 +35,40 @@ class MemberController extends Controller
 
     /**
      * Enregistrement d'un nouvel adhérent
+     * @param StoreMemberRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreMemberRequest $request)
     {
-        $data = $request->validate([
-            'nom' => 'required|string|min:3|max:60',
-            'prenoms' => 'required|string|min:3|max:200',
-            'date_naissance' => 'required|date',
-            'email' => 'required|email|unique:members',
-            'fonction' => 'required|string',
-            'phone1' => 'required|regex:/^[0-9]+$/',
-            'phone2' => 'nullable|regex:/^[0-9]+$/',
-            'pays_id' => 'required|integer',
-            'cv' => 'mimes:docx,pdf',
-            'photo' => 'mimes:jpeg,bmp,png|image',
-            'structure_id' => 'array',
-        ]);
+        $data = $request->validated();
+
+        $cv = $data['cv'];
+        $photo = $data['photo'];
+        $data['phone1'] = trim(str_replace(' ', '', $data['phone1']));
+        $data['phone2'] = trim(str_replace(' ', '', $data['phone2']));
+
+        if (!is_null($data['cv'])) {
+            $cv = Helpers::addFile($cv, 'cv');
+        }
+        if (!is_null($data['photo'])) {
+            $photo = Helpers::addFile($photo, 'photos');
+        }
 
         try {
+            $data['cv'] = $cv['fileName'];
+            $data['photo'] = $photo['fileName'];
+
             $adherent = Member::create($data);
+
             // Ajout dans une structure si existe.
             if(!is_null($data['structure_id'])) {
                 $adherent->structures()->sync($data['structure_id']);
             }
-
-            return redirect()->route('members.index')->with('success', 'Nouvel adhérent créé avec succès.');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', 'Une erreur est survenu ' . $e->getMessage());
         }
+
+        return redirect()->route('members.index')->with('success', 'Nouvel adhérent créé avec succès.');
     }
 
     /**
@@ -75,5 +84,54 @@ class MemberController extends Controller
             'phone2' => 'Numéro de téléphone 2',
             'pays_id' => 'Pays',
         ];
+    }
+
+    /**
+     * Delete member
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $member = Member::findOrFail($id);
+
+        $member->delete();
+
+        return redirect()->back()->with('success', 'Membre supprimé avec succès.');
+    }
+
+    public function show($id)
+    {
+        $member = Member::findOrFail($id);
+
+        return view('', compact('members'));
+    }
+
+    public function update(StoreMemberRequest $request, $id)
+    {
+        $data = $request->validated();
+        
+        $cv = $data['cv'];
+        $photo = $data['photo'];
+        $data['phone1'] = trim(str_replace(' ', '', $data['phone1']));
+        $data['phone2'] = trim(str_replace(' ', '', $data['phone2']));
+
+        if (!is_null($data['cv'])) {
+            $cv = Helpers::addFile($cv, 'cv');
+        }
+        if (!is_null($data['photo'])) {
+            $photo = Helpers::addFile($photo, 'photos');
+        }
+        $data['cv'] = $cv['fileName'];
+        $data['photo'] = $photo['fileName'];
+
+        try {
+            $member = Member::findOrFail($id);
+
+            $member->update($data);
+        } catch (\Exception $e) {
+            dump($e->getMessage());
+            die();
+        }
     }
 }

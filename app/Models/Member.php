@@ -17,4 +17,12 @@ class Member extends Model
     {
         return $this->belongsToMany('App\Models\Structure', 'member_structure')->withTimestamps();
     }
+
+    /**
+     * Get the country for the members.
+     */
+    public function pays()
+    {
+        return $this->belongsTo('App\Models\Pays', 'pays_id');
+    }
 }

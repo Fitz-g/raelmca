@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8124a02b-fb29-44b5-85f5-db880c03e328" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdherantController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaysController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaysController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StructureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StructureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Adherant.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Structure.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Structure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_31_103503_create_adherants_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_19_231421_create_adherant_structure_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adherents/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adherents/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/Helpers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/StoreMemberRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Pays.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pays.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/adherents/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adherents/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pays/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pays/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/includes/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/flash-message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../eyumbalocataire" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -183,6 +179,7 @@
       <workItem from="1592418224219" duration="2923000" />
       <workItem from="1592468062600" duration="188000" />
       <workItem from="1593690068549" duration="814000" />
+      <workItem from="1594493088466" duration="8521000" />
     </task>
     <servers />
   </component>
@@ -206,9 +203,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="359" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592468238950" />
-    <state x="339" y="164" key="run.anything.popup" timestamp="1592178985145">
+    <state x="339" y="164" key="run.anything.popup" timestamp="1594506909854">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1592178985145" />
+    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1594506909854" />
   </component>
 </project>
