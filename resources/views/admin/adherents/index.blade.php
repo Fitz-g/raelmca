@@ -99,9 +99,9 @@
 {{--                                            @endforeach--}}
 {{--                                        </td>--}}
                                         <td style="width:200px;text-align: center">
-                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Voir</a>
-                                            <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</a>
-                                            <form action="#" method="post" style="display: inline-block;">
+                                            <a href="{{ route('members.show', ['member' => $member->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Voir</a>
+                                            <a href="{{ route('members.edit', ['member' => $member->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</a>
+                                            <form action="{{ route('members.destroy', ['member' => $member->id]) }}" method="post" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger waves-effect waves-light btn-sm" onclick="return confirm('Action irréversible, ête vous sûr ?')"><i class="fas fa-trash-alt"></i> Supprimer</button>
