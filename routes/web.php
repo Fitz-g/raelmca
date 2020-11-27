@@ -15,6 +15,7 @@
 Route::get('/', 'DashboardController@loginView')->name('login');
 Route::post('/login', 'AuthController@login')->name('user-login');
 Route::get('/logout', 'AuthController@logout')->name('user-logout');
+// Route::any('/notify', 'notifyController@notify');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', 'DashboardController@dashboard')->name('home');
